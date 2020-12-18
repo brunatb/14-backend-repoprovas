@@ -8,4 +8,15 @@ async function getTeacherAccordingToClass(classId){
     return teachers.rows; 
 }
 
-module.exports = { getTeacherAccordingToClass }
+async function getAllTeachers(){
+    const teachers = await db.query(`SELECT *,
+    (SELECT count("teacherId") AS "numberOfTests" from tests where tests."teacherId" = teachers.id)
+    from teachers`);
+
+    return teachers.rows
+}
+
+module.exports = { 
+    getTeacherAccordingToClass, 
+    getAllTeachers 
+}

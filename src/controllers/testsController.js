@@ -23,6 +23,15 @@ async function postTest(req, res) {
     }
 }
 
+async function getTestByTeacherIdAndCategoryId(req, res){
+    const { teacherId, categoryId } = req.params;
+    try{
+
+    }catch(err){
+        console.log(err);
+    }
+}
+
 module.exports = {
     getAllCategories,
     postTest,
