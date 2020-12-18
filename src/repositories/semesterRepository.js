@@ -8,4 +8,13 @@ async function getFiltredSemester(classId, teacherId){
     return semesters.rows;
 }
 
-module.exports = { getFiltredSemester }
+async function getAllSemesters(){
+    const semesters = await db.query('SELECT * FROM semester');
+
+    return semesters.rows;
+}
+
+module.exports = { 
+    getFiltredSemester,
+    getAllSemesters,
+}

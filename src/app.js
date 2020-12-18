@@ -20,6 +20,10 @@ app.get('/api/teachers', teachersController.getAllTeachers);
 app.get('/api/teachers/:teacherId', teachersController.getTeacherById);
 app.get('/api/teachers/:teacherId/:categoryId', testsController.getTestByTeacherIdAndCategoryId);
 
+app.get('/api/classes/semesters', classesController.getAllSemesters);
+app.get('/api/classes/semesters/:semesterId', classesController.getAllClassesInfo);
+app.get('/api/classes/:classId', classesController.getClassById);
+
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Servidor on no port ${port}`));
 
