@@ -26,7 +26,8 @@ async function postTest(req, res) {
 async function getTestByTeacherIdAndCategoryId(req, res){
     const { teacherId, categoryId } = req.params;
     try{
-
+        const tests = await testsRepository.getTestByTeacherIdAndCategoryId(teacherId, categoryId);
+        res.status(200).send(tests);
     }catch(err){
         console.log(err);
     }
@@ -35,4 +36,5 @@ async function getTestByTeacherIdAndCategoryId(req, res){
 module.exports = {
     getAllCategories,
     postTest,
+    getTestByTeacherIdAndCategoryId
 };

@@ -17,7 +17,7 @@ app.get('/api/:classId/:teacherId/semester', classesController.getFiltredSemeste
 app.post('/api/test', testsController.postTest);
 
 app.get('/api/teachers', teachersController.getAllTeachers);
-//app.get('/api/teachers/:teacherId/:categoryId', )
+app.get('/api/teachers/:teacherId/:categoryId', testsController.getTestByTeacherIdAndCategoryId);
 
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Servidor on no port ${port}`));
