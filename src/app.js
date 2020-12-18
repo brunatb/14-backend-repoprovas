@@ -1,14 +1,19 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const testsController = require('./controllers/testsController')
+const testsController = require('./controllers/testsController');
+const classesController = require('./controllers/classesController');
+const teachersController = require('./controllers/teachersController');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/tests', testsController);
+app.get('/api/classes', classesController.getAllClasses);
+app.get('/api/categories', testsController.getAllCategories);
+app.get('/api/:classId/teachers', teachersController.getTeacherAccordingToClass);
+app.get('/api/:classId/:teacherId/semester', classesController.getFiltredSemester);
 
 
 const port = process.env.PORT;

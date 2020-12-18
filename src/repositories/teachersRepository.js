@@ -1,6 +1,6 @@
 const db = require('../database/index');
 
-async function getTeacherToSendTest(classId){
+async function getTeacherAccordingToClass(classId){
     const teachers = await db.query(`SELECT name, "teacherId" FROM teachers
     JOIN offering ON offering."teacherId" = teachers.id 
     WHERE offering."classId" = $1`, [classId]);
@@ -8,4 +8,4 @@ async function getTeacherToSendTest(classId){
     return teachers.rows; 
 }
 
-module.exports = { getTeacherToSendTest }
+module.exports = { getTeacherAccordingToClass }
