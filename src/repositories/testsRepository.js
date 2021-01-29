@@ -13,7 +13,15 @@ async function getTestByTeacherIdAndCategoryId(teacherId, categoryId){
     return tests.rows;
 }
 
+async function getTestsBySemesterIdCategoryIdClassId(semesterId, categoryId, classId){
+    const tests = await db.query(`SELECT tests.id, tests.name, tests,url FROM tests WHERE 
+    tests."semesterId" = $1 AND tests."categoryId" = $2 AND tests."classId" = $3`, [semesterId, categoryId, classId]);
+    
+    return tests.rows;
+}
+
 module.exports = {
     postTest,
     getTestByTeacherIdAndCategoryId,
+    getTestsBySemesterIdCategoryIdClassId,
 }

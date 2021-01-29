@@ -8,6 +8,7 @@ async function getAllCategories (req, res) {
         res.status(200).send(categories);
     }catch(err){
         console.log(err);
+        res.sendStatus(500);
     }
 }
 
@@ -20,6 +21,7 @@ async function postTest(req, res) {
 
     }catch(err){
         console.log(err);
+        res.sendStatus(500);
     }
 }
 
@@ -30,11 +32,25 @@ async function getTestByTeacherIdAndCategoryId(req, res){
         res.status(200).send(tests);
     }catch(err){
         console.log(err);
+        res.sendStatus(500);
     }
+}
+
+async function getTestsBySemesterIdCategoryIdClassId(req, res){
+    const { semesterId, categoryId, classId } = req.params;
+    try{
+        const tests = await testsRepository.getTestsBySemesterIdCategoryIdClassId(semesterId, categoryId, classId);
+        res.status(200).send(tests);
+    }catch(err){
+        console.log(err);
+        res.sendStatus(500);
+    }
+
 }
 
 module.exports = {
     getAllCategories,
     postTest,
-    getTestByTeacherIdAndCategoryId
+    getTestByTeacherIdAndCategoryId,
+    getTestsBySemesterIdCategoryIdClassId
 };

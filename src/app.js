@@ -24,6 +24,8 @@ app.get('/api/classes/semesters', classesController.getAllSemesters);
 app.get('/api/classes/semesters/:semesterId', classesController.getAllClassesInfo);
 app.get('/api/classes/:classId', classesController.getClassById);
 
+app.get('/api/semester/:semesterId/classes/:classId/categories/:categoryId', testsController.getTestsBySemesterIdCategoryIdClassId);
+
 const port = process.env.PORT;
 app.listen(port, () => console.log(`Servidor on no port ${port}`));
 
