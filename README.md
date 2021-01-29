@@ -1,1 +1,3 @@
-# 14-repo-provas-back
+# RepoProvas API
+
+This project simulates a website where you can post or consult old exams from your college / school.
